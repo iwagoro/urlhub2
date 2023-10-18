@@ -1,22 +1,30 @@
 import React from "react";
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom"; // インポートを修正
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { UserDataProvider } from "./provider/UserDataProvider";
+
 import Base from "./base/Base";
 import Home from "./pages/Home";
 import Presets from "./pages/Presets";
-import Library from "./pages/Library";
+import Urls from "./pages/Urls";
+import MySpeedDial from "./components/SpeedDial";
+import Add from "./pages/Add";
 
 const App = () => {
     return (
-        <div className="App bg-black">
+        <div>
             <UserDataProvider>
                 <Router>
                     <Base />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/presets" element={<Presets />} />
-                        <Route path="/library" element={<Library />} />
-                    </Routes>
+                    <div className="flex items-center justify-center">
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/presets" element={<Presets />} />
+                            <Route path="/urls" element={<Urls />} />
+                            <Route path="/add/url" element={<Add type={"url"} />} />
+                            <Route path="/add/preset" element={<Add type={"preset"} />} />
+                        </Routes>
+                    </div>
+                    <MySpeedDial />
                 </Router>
             </UserDataProvider>
         </div>

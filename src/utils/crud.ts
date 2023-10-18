@@ -5,7 +5,7 @@ import { collection, getDocs, doc, setDoc, deleteDoc, updateDoc, addDoc, query, 
 const getData = async (email: string, type: string, num: number) => {
     let data: any = [];
     const collectionRef = collection(db, "User", email, type);
-    const q = query(collectionRef, limit(num));
+    const q = query(collectionRef, orderBy("date"), limit(num));
     const snapshot = await getDocs(q);
     snapshot.forEach((doc) => {
         data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加

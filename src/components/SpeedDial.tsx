@@ -67,11 +67,7 @@ const MySpeedDial = () => {
     const navigate = useNavigate();
 
     const onClick = (name: string) => {
-        if (name === "url") {
-            navigate("/add/url");
-        } else if (name === "preset") {
-            navigate("/add/preset");
-        }
+        name === "url" ? navigate("/add/url") : navigate("/add/preset");
     };
     return (
         <MyDial ariaLabel="Custom SpeedDial example" icon={<SpeedDialIcon />}>

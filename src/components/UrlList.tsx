@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { urlData } from "../consts/interface";
 import { useUserData } from "../provider/UserDataProvider";
@@ -63,20 +63,16 @@ const ImageContainer = styled.div`
 
 const UrlList = ({ urls }: { urls: Array<urlData> }) => {
     const { user, setUrlToLatest } = useUserData();
-    const [card, setCard] = useState<Array<JSX.Element>>([]);
 
-    useEffect(() => {
-        setCard([]);
-        setCard(
-            urls.map((url, index) => (
-                <Card key={`url${index}`} target="_blank" href={url.url} onClick={() => setUrlToLatest(url.name)}>
-                    <ImageContainer>
-                        <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
-                    </ImageContainer>
-                    <h3 className="w-full">{url.name}</h3>
-                </Card>
-            ))
-        );
+    const card = useMemo(() => {
+        return urls.map((url, index) => (
+            <Card key={`url${index}`} target="_blank" href={url.url} onClick={() => setUrlToLatest(url.name)}>
+                <ImageContainer>
+                    <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
+                </ImageContainer>
+                <h3 className="w-full">{url.name}</h3>
+            </Card>
+        ));
     }, [urls]);
 
     return (

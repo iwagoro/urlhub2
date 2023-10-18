@@ -26,7 +26,7 @@ export const useUrls = (user: string, num: number) => {
         await updateData(user, "Urls", name, data);
     };
 
-    const addUrls = async (name: string, url: string, image: string) => {
+    const addUrl = async (name: string, url: string, image: string) => {
         const data = {
             name: name,
             lowName: name.toLowerCase(),
@@ -41,5 +41,5 @@ export const useUrls = (user: string, num: number) => {
         });
     };
 
-    return { urls, initUrls, getUrls, getRecentUrls, setUrlToLatest, addUrls };
+    return { urls, initUrls, getUrls, getRecentUrls, setUrlToLatest, addUrl };
 };

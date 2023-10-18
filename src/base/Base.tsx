@@ -7,15 +7,28 @@ interface ButtonProps {
     style?: CSSObject;
 }
 
+const Container = styled.div`
+    width: calc(100% - 20px);
+    height: 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: #ececec;
+    border-radius: 10px;
+
+    margin: 10px;
+`;
+
 const Button = styled(Link)<ButtonProps>`
     width: ${(props) => (props.width ? props.width : "auto")};
     text-decoration: none;
     text-align: center;
     font-size: 16px;
-    color: white;
+    color: gray;
     ${(props) => props.style} // props.styleをそのまま適用する
     &:hover {
-        border: 2px solid white;
         border-radius: 5px;
     }
 
@@ -26,7 +39,7 @@ const Button = styled(Link)<ButtonProps>`
 
 const Base = () => {
     return (
-        <div className="w-full h-[100px]  flex justify-between items-center box-border px-[5vw]">
+        <Container>
             <Button id="home-button" width="20%" to="/" style={{ fontWeight: "bold" }}>
                 URLHUB
             </Button>
@@ -36,10 +49,10 @@ const Base = () => {
             <Button id="library-button" width="20%" to="/presets">
                 PRESETS
             </Button>
-            <Button id="library-button" width="20%" to="/library">
-                LIBRARY
+            <Button id="library-button" width="20%" to="/Urls">
+                URLS
             </Button>
-        </div>
+        </Container>
     );
 };
 

@@ -26,7 +26,7 @@ export const usePresets = (user: string, num: number) => {
         await updateData(user, "Presets", name, data);
     };
 
-    const addPresets = async (name: string, image: string) => {
+    const addPreset = async (name: string, image: string) => {
         const data = {
             name: name,
             lowName: name.toLowerCase(),
@@ -39,5 +39,5 @@ export const usePresets = (user: string, num: number) => {
         });
     };
 
-    return { presets, initPresets, getPresets, getRecentPresets, setPresetToLatest, addPresets };
+    return { presets, initPresets, getPresets, getRecentPresets, setPresetToLatest, addPreset };
 };

@@ -18,7 +18,7 @@ const Home = () => {
                 WELCOME BACK <br />
                 USER : "{user}"
             </h1>
-            <Divider text="Recent Url" type="right" />
+            <Divider text="Recent Url" type="left" />
             <UrlList urls={urls} />
             <Divider text="Recent Presets" type="left" />
             <PresetList presets={presets} />

@@ -9,7 +9,7 @@ const Search = styled.input`
     background: transparent;
     border-bottom: 1.5px solid gray;
     outline: none;
-    color: white;
+    color: gray;
     font-size: 16px;
 
     @media (max-width: 480px) {
@@ -39,7 +39,7 @@ const SearchInput = () => {
                         position: "relative",
                         left: "-16px",
                         fontSize: "16px",
-                        color: "white",
+                        color: "gray",
                         cursor: "pointer",
                         marginBottom: "2px",
                         "@media (max-width: 480px)": {

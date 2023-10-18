@@ -67,7 +67,6 @@ const PresetList = ({ presets }: { presets: Array<presetData> }) => {
     const [card, setCard] = useState<JSX.Element[]>([]);
 
     useEffect(() => {
-        console.log(presets);
         setCard([]);
         setCard(
             presets.map((preset, index) => (
