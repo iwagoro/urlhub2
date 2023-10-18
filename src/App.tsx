@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom"; // インポートを修正
+import { UserDataProvider } from "./provider/UserDataProvider";
+import Base from "./base/Base";
+import Home from "./pages/Home";
+import Presets from "./pages/Presets";
+import Library from "./pages/Library";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="App bg-black">
+            <UserDataProvider>
+                <Router>
+                    <Base />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/presets" element={<Presets />} />
+                        <Route path="/library" element={<Library />} />
+                    </Routes>
+                </Router>
+            </UserDataProvider>
+        </div>
+    );
+};
 
 export default App;
