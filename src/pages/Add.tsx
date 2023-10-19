@@ -35,7 +35,7 @@ const ImageContainer = styled.div`
 `;
 
 const Add = ({ type }: { type: string }) => {
-    const { image, generateImage } = useUserData();
+    const { image, generateImage, initImage } = useUserData();
     const { register, handleSubmit, reset } = useForm<{ name: string; url: string }>();
     const { user, addPreset, addUrl } = useUserData();
 
@@ -46,6 +46,7 @@ const Add = ({ type }: { type: string }) => {
     const onSubmit: SubmitHandler<{ name: string; url: string }> = (data) => {
         type === "url" ? addUrl(data.name, data.url, image) : addPreset(data.name, image);
         reset();
+        initImage();
     };
 
     return (

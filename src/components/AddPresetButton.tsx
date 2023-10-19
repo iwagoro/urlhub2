@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TagIcon from "@mui/icons-material/Tag";
+import { useNavigate } from "react-router-dom";
 const Container = styled.div`
     width: calc(100% - 5w);
     aspect-ratio: 1/1;
@@ -14,6 +15,8 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
 
+    cursor: pointer;
+
     color: gray;
 `;
 
@@ -26,8 +29,9 @@ const Icon = styled(TagIcon)`
 `;
 
 const AddPresetButton = () => {
+    const navigate = useNavigate();
     return (
-        <Container>
+        <Container onClick={() => navigate("/add/preset")}>
             <Icon />
             <h2>ADD PRESET</h2>
         </Container>
