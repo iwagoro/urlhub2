@@ -20,7 +20,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className="h-auto mb-[5vh]">
+        <div className="w-screen h-auto mb-[5vh] overflow-x-hidden">
             <Router>
                 <Base />
                 <Greet />
