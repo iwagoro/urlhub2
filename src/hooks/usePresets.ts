@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { presetData } from "../consts/interface";
-import { getData, getDataWithLowName, getRecentData, setData, updateData } from "../utils/crud";
+import { getData, getDataWithLowName, getRecentData, setData, updateData, getNextRecentData, getBeforeRecentData } from "../utils/crud";
 
 export const usePresets = (user: string, num: number) => {
     const [presets, setPresets] = useState<presetData[]>([]);
@@ -16,7 +16,22 @@ export const usePresets = (user: string, num: number) => {
 
     const getRecentPresets = useCallback(async () => {
         const data = await getRecentData(user, "Presets", num);
-        data.reverse();
+        setPresets(data);
+    }, []);
+
+    const getNextRecentPresets = useCallback(async (preset: presetData) => {
+        const data = await getNextRecentData(user, "Presets", num, preset.date);
+        initPresets();
+        console.log("result:");
+        console.log(data);
+        setPresets(data);
+    }, []);
+
+    const getBeforeRecentPresets = useCallback(async (preset: presetData) => {
+        const data = await getBeforeRecentData(user, "Presets", num, preset.date);
+        initPresets();
+        console.log("result:");
+        console.log(data);
         setPresets(data);
     }, []);
 
@@ -45,5 +60,5 @@ export const usePresets = (user: string, num: number) => {
         });
     }, []);
 
-    return { presets, initPresets, getPresets, getRecentPresets, getPresetsWithName, setPresetToLatest, addPreset };
+    return { presets, initPresets, getPresets, getRecentPresets, getNextRecentPresets, getBeforeRecentPresets, getPresetsWithName, setPresetToLatest, addPreset };
 };

@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { urlData } from "../consts/interface";
-import { getData, getDataWithLowName, getRecentData, setData, updateData } from "../utils/crud";
+import { getData, getDataWithLowName, getRecentData, setData, updateData, getNextRecentData, getBeforeRecentData } from "../utils/crud";
 
 export const useUrls = (user: string, num: number) => {
     const [urls, setUrls] = useState<urlData[]>([]);
@@ -21,7 +21,22 @@ export const useUrls = (user: string, num: number) => {
 
     const getRecentUrls = useCallback(async () => {
         const data = await getRecentData(user, "Urls", num);
-        data.reverse();
+        setUrls(data);
+    }, []);
+
+    const getNextRecentUrls = useCallback(async (url: urlData) => {
+        const data = await getNextRecentData(user, "Urls", num, url.date);
+        initUrls();
+        console.log("result:");
+        console.log(data);
+        setUrls(data);
+    }, []);
+
+    const getBeforeRecentUrls = useCallback(async (url: urlData) => {
+        const data = await getBeforeRecentData(user, "Urls", num, url.date);
+        initUrls();
+        console.log("result:");
+        console.log(data);
         setUrls(data);
     }, []);
 
@@ -47,5 +62,5 @@ export const useUrls = (user: string, num: number) => {
         });
     }, []);
 
-    return { urls, initUrls, getUrls, getRecentUrls, getUrlsWithName, setUrlToLatest, addUrl };
+    return { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithName, setUrlToLatest, addUrl };
 };

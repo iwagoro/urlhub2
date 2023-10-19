@@ -1,1 +1,1 @@
-export const MAX_CARD_LIMIT = 10;
+export const MAX_CARD_LIMIT = 3;

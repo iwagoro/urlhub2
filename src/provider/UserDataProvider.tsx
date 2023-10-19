@@ -13,6 +13,8 @@ const UserContext = createContext(
         initUrls: () => void; // Change "intiUrls" to "initUrls"
         getUrls: () => void;
         getRecentUrls: () => void;
+        getNextRecentUrls: (url: urlData) => void;
+        getBeforeRecentUrls: (url: urlData) => void;
         getUrlsWithName: (name: string) => void;
         setUrlToLatest: (name: string) => void;
         addUrl: (name: string, url: string, image: string) => void;
@@ -20,6 +22,8 @@ const UserContext = createContext(
         initPresets: () => void;
         getPresets: () => void;
         getRecentPresets: () => void;
+        getNextRecentPresets: (preset: presetData) => void;
+        getBeforeRecentPresets: (preset: presetData) => void;
         getPresetsWithName: (name: string) => void;
         setPresetToLatest: (name: string) => void;
         addPreset: (name: string, image: string) => void;
@@ -31,8 +35,8 @@ const UserContext = createContext(
 
 export const UserDataProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<string>("test@gmail.com");
-    const { urls, initUrls, getUrls, getRecentUrls, getUrlsWithName, setUrlToLatest, addUrl } = useUrls(user, MAX_CARD_LIMIT);
-    const { presets, initPresets, getPresets, getRecentPresets, getPresetsWithName, setPresetToLatest, addPreset } = usePresets(user, MAX_CARD_LIMIT);
+    const { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithName, setUrlToLatest, addUrl } = useUrls(user, MAX_CARD_LIMIT);
+    const { presets, initPresets, getPresets, getRecentPresets, getNextRecentPresets, getBeforeRecentPresets, getPresetsWithName, setPresetToLatest, addPreset } = usePresets(user, MAX_CARD_LIMIT);
     const { image, generateImage, initImage } = useImage();
 
     const value = {
@@ -42,6 +46,8 @@ export const UserDataProvider = ({ children }: { children: React.ReactNode }) =>
         initUrls,
         getUrls,
         getRecentUrls,
+        getNextRecentUrls,
+        getBeforeRecentUrls,
         getUrlsWithName,
         setUrlToLatest,
         addUrl,
@@ -50,6 +56,8 @@ export const UserDataProvider = ({ children }: { children: React.ReactNode }) =>
         getPresets,
         setPresetToLatest,
         getRecentPresets,
+        getNextRecentPresets,
+        getBeforeRecentPresets,
         getPresetsWithName,
         addPreset,
         image,
