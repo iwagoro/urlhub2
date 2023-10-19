@@ -8,28 +8,28 @@ interface ButtonProps {
 }
 
 const Container = styled.div`
-    width: calc(100% - 20px);
-    height: 50px;
+    box-shadow: 0 1rem 2rem #cecece;
+    width: calc(100% - 5w);
+    height: 70px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background-color: #ececec;
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 20px;
 
-    margin: 10px;
+    margin: 2.5vw 2.5vw 0 2.5vw;
 `;
-
 const Button = styled(Link)<ButtonProps>`
     width: ${(props) => (props.width ? props.width : "auto")};
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     color: gray;
+    border-radius: 5px;
     ${(props) => props.style} // props.styleをそのまま適用する
     &:hover {
-        border-radius: 5px;
     }
 
     @media (max-width: 480px) {
@@ -40,8 +40,8 @@ const Button = styled(Link)<ButtonProps>`
 const Base = () => {
     return (
         <Container>
-            <Button id="home-button" width="20%" to="/" style={{ fontWeight: "bold" }}>
-                URLHUB
+            <Button id="home-button" width="20%" to="/">
+                HOME
             </Button>
             <div className="w-[40%]">
                 <SearchInput />
