@@ -12,7 +12,7 @@ import SearchResult from "./pages/SearchResult";
 import Greet from "./components/Greet";
 
 const App = () => {
-    const { getRecentPresets, getRecentUrls } = useUserData();
+    const { getRecentPresets, getRecentUrls, getNextRecentUrls } = useUserData();
 
     useEffect(() => {
         getRecentUrls();

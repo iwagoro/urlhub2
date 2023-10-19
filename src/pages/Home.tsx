@@ -38,6 +38,7 @@ const Home = () => {
                 <div className="py-[2.5vw]">
                     <Divider text="Recent Presets" type="left" />
                     <PresetList presets={presets} />
+                    <Button type={"preset"} />
                     <Divider text="Recent Presets" type="right" />
                 </div>
             </Container>
