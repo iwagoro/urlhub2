@@ -5,6 +5,8 @@ import Divider from "../components/Divider";
 import UrlList from "../components/UrlList";
 import PresetList from "../components/PresetList";
 import Button from "../components/NextPage";
+import AddUrlButton from "../components/AddUrlButton";
+import AddPresetButton from "../components/AddPresetButton";
 
 const Container = styled.div`
     box-shadow: 0 1rem 2rem #cecece;
@@ -17,7 +19,7 @@ const Container = styled.div`
     align-items: center;
 
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 2.5vw 2.5vw 0 2.5vw;
 `;
 
@@ -26,6 +28,15 @@ const Home = () => {
 
     return (
         <div className="flex flex-col">
+            <div className="w-ful flex ">
+                <div className="w-[25%]">
+                    <AddUrlButton />
+                </div>
+                <div className="w-[25%]">
+                    <AddPresetButton />
+                </div>
+                <div className="w-[50%]"></div>
+            </div>
             <Container>
                 <div className="py-[2.5vw]">
                     <Divider text="Recent Urls" type="left" />

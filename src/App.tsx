@@ -6,7 +6,6 @@ import Base from "./base/Base";
 import Home from "./pages/Home";
 import Presets from "./pages/Presets";
 import Urls from "./pages/Urls";
-import MySpeedDial from "./components/SpeedDial";
 import Add from "./pages/Add";
 import SearchResult from "./pages/SearchResult";
 import Greet from "./components/Greet";
@@ -34,7 +33,6 @@ const App = () => {
                         <Route path="/add/preset" element={<Add type={"preset"} />} />
                     </Routes>
                 </div>
-                <MySpeedDial />
             </Router>
         </div>
     );

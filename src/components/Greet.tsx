@@ -13,7 +13,7 @@ const Container = styled.div`
     align-items: center;
 
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
 
     margin: 2.5vw 2.5vw 0 2.5vw;
 `;
