@@ -1,38 +1,38 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { urlData } from "../consts/interface";
 import { getData, getDataWithLowName, getRecentData, setData, updateData } from "../utils/crud";
 
 export const useUrls = (user: string, num: number) => {
     const [urls, setUrls] = useState<urlData[]>([]);
 
-    const initUrls = () => {
+    const initUrls = useCallback(() => {
         setUrls([]);
-    };
+    }, []);
 
-    const getUrls = async () => {
+    const getUrls = useCallback(async () => {
         const data = await getData(user, "Urls", num);
         setUrls(data);
-    };
+    }, []);
 
-    const getUrlsWithName = async (name: string) => {
+    const getUrlsWithName = useCallback(async (name: string) => {
         const data = await getDataWithLowName(user, "Urls", name.toLowerCase(), num);
         setUrls(data);
-    };
+    }, []);
 
-    const getRecentUrls = async () => {
+    const getRecentUrls = useCallback(async () => {
         const data = await getRecentData(user, "Urls", num);
         data.reverse();
         setUrls(data);
-    };
+    }, []);
 
-    const setUrlToLatest = async (name: string) => {
+    const setUrlToLatest = useCallback(async (name: string) => {
         const data = {
             date: new Date(),
         };
         await updateData(user, "Urls", name, data);
-    };
+    }, []);
 
-    const addUrl = async (name: string, url: string, image: string) => {
+    const addUrl = useCallback(async (name: string, url: string, image: string) => {
         const data = {
             name: name,
             lowName: name.toLowerCase(),
@@ -45,7 +45,7 @@ export const useUrls = (user: string, num: number) => {
         setUrls((prev) => {
             return [...prev, data];
         });
-    };
+    }, []);
 
     return { urls, initUrls, getUrls, getRecentUrls, getUrlsWithName, setUrlToLatest, addUrl };
 };
