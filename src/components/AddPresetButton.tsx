@@ -6,7 +6,7 @@ const Container = styled.div`
     width: calc(100% - 5w);
     aspect-ratio: 1/1;
     box-shadow: 0 1rem 2rem #cecece;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: white;
     margin: 2.5vw 2.5vw 0 2.5vw;
 

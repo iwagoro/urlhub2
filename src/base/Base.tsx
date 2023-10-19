@@ -8,7 +8,6 @@ interface ButtonProps {
 }
 
 const Container = styled.div`
-    box-shadow: 0 1rem 2rem #cecece;
     width: calc(100% - 5w);
     height: 90px;
 
@@ -16,7 +15,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    background-color: white;
+    background-color: transparent;
     border-radius: 10px;
 
     margin: 2.5vw 2.5vw 0 2.5vw;

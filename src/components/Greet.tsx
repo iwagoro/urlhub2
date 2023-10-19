@@ -3,7 +3,6 @@ import { useUserData } from "../provider/UserDataProvider";
 import styled from "styled-components";
 
 const Container = styled.div`
-    box-shadow: 0 1rem 2rem #cecece;
     width: calc(100% - 5w);
     height: auto;
 
@@ -12,8 +11,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    background-color: white;
-    border-radius: 10px;
+    background-color: transparent;
 
     margin: 2.5vw 2.5vw 0 2.5vw;
 `;

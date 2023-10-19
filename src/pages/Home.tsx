@@ -28,7 +28,26 @@ const Home = () => {
 
     return (
         <div className="flex flex-col">
-            <div className="w-ful flex ">
+            <div className="py-[2.5vw]">
+                <Divider text="Recent Urls" type="left" />
+                <UrlList urls={urls} />
+                <Button type={"url"} />
+                <Divider text="Recent Urls" type="right" />
+            </div>
+            <div className="py-[2.5vw]">
+                <Divider text="Recent Presets" type="left" />
+                <PresetList presets={presets} />
+                <Button type={"preset"} />
+                <Divider text="Recent Presets" type="right" />
+            </div>
+        </div>
+    );
+};
+
+export default Home;
+
+/*
+            <div className="w-ful flex mx-[2.5vw]">
                 <div className="w-[25%]">
                     <AddUrlButton />
                 </div>
@@ -37,24 +56,4 @@ const Home = () => {
                 </div>
                 <div className="w-[50%]"></div>
             </div>
-            <Container>
-                <div className="py-[2.5vw]">
-                    <Divider text="Recent Urls" type="left" />
-                    <UrlList urls={urls} />
-                    <Button type={"url"} />
-                    <Divider text="Recent Urls" type="right" />
-                </div>
-            </Container>
-            <Container>
-                <div className="py-[2.5vw]">
-                    <Divider text="Recent Presets" type="left" />
-                    <PresetList presets={presets} />
-                    <Button type={"preset"} />
-                    <Divider text="Recent Presets" type="right" />
-                </div>
-            </Container>
-        </div>
-    );
-};
-
-export default Home;
+*/
