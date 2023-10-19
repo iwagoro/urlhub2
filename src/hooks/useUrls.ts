@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { urlData } from "../consts/interface";
-import { getData, getRecentData, setData, updateData } from "../utils/crud";
+import { getData, getDataWithLowName, getRecentData, setData, updateData } from "../utils/crud";
 
 export const useUrls = (user: string, num: number) => {
     const [urls, setUrls] = useState<urlData[]>([]);
@@ -14,8 +14,14 @@ export const useUrls = (user: string, num: number) => {
         setUrls(data);
     };
 
+    const getUrlsWithName = async (name: string) => {
+        const data = await getDataWithLowName(user, "Urls", name.toLowerCase(), num);
+        setUrls(data);
+    };
+
     const getRecentUrls = async () => {
         const data = await getRecentData(user, "Urls", num);
+        data.reverse();
         setUrls(data);
     };
 
@@ -41,5 +47,5 @@ export const useUrls = (user: string, num: number) => {
         });
     };
 
-    return { urls, initUrls, getUrls, getRecentUrls, setUrlToLatest, addUrl };
+    return { urls, initUrls, getUrls, getRecentUrls, getUrlsWithName, setUrlToLatest, addUrl };
 };

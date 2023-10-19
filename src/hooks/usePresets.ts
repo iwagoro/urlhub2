@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { presetData } from "../consts/interface";
-import { getData, getRecentData, setData, updateData } from "../utils/crud";
+import { getData, getDataWithLowName, getRecentData, setData, updateData } from "../utils/crud";
 
 export const usePresets = (user: string, num: number) => {
     const [presets, setPresets] = useState<presetData[]>([]);
@@ -16,6 +16,12 @@ export const usePresets = (user: string, num: number) => {
 
     const getRecentPresets = async () => {
         const data = await getRecentData(user, "Presets", num);
+        data.reverse();
+        setPresets(data);
+    };
+
+    const getPresetsWithName = async (name: string) => {
+        const data = await getDataWithLowName(user, "Presets", name.toLowerCase(), num);
         setPresets(data);
     };
 
@@ -39,5 +45,5 @@ export const usePresets = (user: string, num: number) => {
         });
     };
 
-    return { presets, initPresets, getPresets, getRecentPresets, setPresetToLatest, addPreset };
+    return { presets, initPresets, getPresets, getRecentPresets, getPresetsWithName, setPresetToLatest, addPreset };
 };
