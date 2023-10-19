@@ -13,9 +13,13 @@ const Container = styled.div`
 `;
 
 const Card = styled.a`
-    width: calc(100% / 9 - 5vw);
+    width: calc(100% / 9 - 2.5vw);
     cursor: pointer;
     margin: 10px 2.5vw;
+
+    border-radius: 20px;
+
+    box-shadow: 0 1rem 2rem #cecece;
 
     display: flex;
     flex-direction: column;
@@ -23,27 +27,23 @@ const Card = styled.a`
     justify-content: center;
 
     @media (max-width: 1770px) {
-        width: calc(100% / 5 - 5vw);
-        font-size: 2vw;
-    }
-
-    @media (max-width: 1200px) {
         width: calc(100% / 4 - 5vw);
         font-size: 2vw;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         width: calc(100% / 3 - 5vw);
         font-size: 2vw;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
         width: calc(100% / 2 - 5vw);
         font-size: 2vw;
     }
 `;
 const ImageContainer = styled.div`
-    width: 100%;
+    width: 80%;
+    margin-top: 10%;
     aspect-ratio: 1/1;
     overflow: hidden;
 
@@ -55,10 +55,6 @@ const ImageContainer = styled.div`
     border-radius: 10px;
 
     background-color: black;
-
-    &:hover {
-        border: 2px solid white;
-    }
 `;
 
 const UrlList = ({ urls }: { urls: Array<urlData> }) => {
@@ -70,7 +66,7 @@ const UrlList = ({ urls }: { urls: Array<urlData> }) => {
                 <ImageContainer>
                     <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
                 </ImageContainer>
-                <h3 className="w-full">{url.name}</h3>
+                <h3 className="w-[80%] my-[10px]">{url.name}</h3>
             </Card>
         ));
     }, [urls]);

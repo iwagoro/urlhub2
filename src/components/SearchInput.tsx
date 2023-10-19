@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Search = styled.input`
     width: 90%;
     background: transparent;
-    border-bottom: 1.5px solid gray;
+    border-bottom: 2px solid gray;
     outline: none;
     color: gray;
     font-size: 16px;
@@ -37,13 +37,13 @@ const SearchInput = () => {
                 <SearchIcon
                     sx={{
                         position: "relative",
-                        left: "-16px",
-                        fontSize: "16px",
+                        left: "-20px",
+                        fontSize: "20px",
                         color: "gray",
                         cursor: "pointer",
                         marginBottom: "2px",
                         "@media (max-width: 480px)": {
-                            left: "-10px",
+                            left: "-12px",
                             fontSize: "12px",
                         },
                     }}

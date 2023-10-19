@@ -5,33 +5,26 @@ interface LineProps {
 }
 
 const Line = styled.div<LineProps>`
-    width: 80%;
+    width: 75%;
     height: 2px;
-    background-color: gray;
+    background-color: #f3f3f3;
     ${(props) => props.style}
 `;
 
-const Text = styled.div`
-    width: 20%;
-    font-size: 1.2rem;
+const Text = styled.h2`
+    width: 25%;
     font-weight: bold;
     text-align: center;
-    border: 2px solid gray;
     border-radius: 10px;
     color: gray;
-
-    @media (max-width: 1000px) {
-        font-size: 2vw;
-    }
 `;
 
 const Container = styled.div`
     width: 100%;
+    padding: 2vw 2.5vw;
     display: flex;
     justify-content: between;
     align-items: center;
-    padding: 0px 5vw;
-    margin: 10px 0;
 `;
 
 const Divider = ({ text, type }: { text: string; type: string }) => {

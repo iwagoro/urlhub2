@@ -9,13 +9,15 @@ import Urls from "./pages/Urls";
 import MySpeedDial from "./components/SpeedDial";
 import Add from "./pages/Add";
 import SearchResult from "./pages/SearchResult";
+import Greet from "./components/Greet";
 
 const App = () => {
     return (
-        <div>
+        <div className="h-auto my-[5vh]">
             <UserDataProvider>
                 <Router>
                     <Base />
+                    <Greet />
                     <div className="flex items-center justify-center">
                         <Routes>
                             <Route path="/" element={<Home />} />
