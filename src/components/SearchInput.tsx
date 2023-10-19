@@ -27,7 +27,7 @@ const SearchInput = () => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        navigate(`/presets/${data.keyword}`);
+        navigate(`/search/${data.keyword}`);
     };
 
     return (

@@ -8,6 +8,7 @@ import Presets from "./pages/Presets";
 import Urls from "./pages/Urls";
 import MySpeedDial from "./components/SpeedDial";
 import Add from "./pages/Add";
+import SearchResult from "./pages/SearchResult";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/presets" element={<Presets />} />
+                            <Route path="/search/:name" element={<SearchResult />} />
                             <Route path="/urls" element={<Urls />} />
                             <Route path="/add/url" element={<Add type={"url"} />} />
                             <Route path="/add/preset" element={<Add type={"preset"} />} />

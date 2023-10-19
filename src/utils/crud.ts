@@ -28,12 +28,16 @@ const getRecentData = async (email: string, type: string, num: number) => {
 
 //get url/preset data with field name
 const getDataWithLowName = async (email: string, type: string, name: string, num: number) => {
-    let tmp = {};
+    let data: any = [];
     const collectionRef = collection(db, "User", email, type);
     const q = query(collectionRef, orderBy("lowName"), startAt(name.toLowerCase()), endAt(name.toLocaleLowerCase() + "\uf8ff"), limit(num));
     const snapshot = await getDocs(q);
     const result = snapshot.docs.map((doc) => doc.data());
-    return result;
+    snapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加
+    });
+
+    return data;
 };
 
 //set data with random name
