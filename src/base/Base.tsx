@@ -10,7 +10,7 @@ interface ButtonProps {
 const Container = styled.div`
     box-shadow: 0 1rem 2rem #cecece;
     width: calc(100% - 5w);
-    height: 70px;
+    height: 90px;
 
     display: flex;
     justify-content: space-between;

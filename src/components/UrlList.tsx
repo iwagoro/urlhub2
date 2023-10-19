@@ -54,21 +54,24 @@ const ImageContainer = styled.div`
     border: 1px solid gray;
     border-radius: 10px;
 
-    background-color: black;
+    background-color: gray;
 `;
 
 const UrlList = ({ urls }: { urls: Array<urlData> }) => {
     const { user, setUrlToLatest } = useUserData();
 
     const card = useMemo(() => {
-        return urls.map((url, index) => (
-            <Card key={`url${index}`} target="_blank" href={url.url} onClick={() => setUrlToLatest(url.name)}>
-                <ImageContainer>
-                    <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
-                </ImageContainer>
-                <h3 className="w-[80%] my-[10px]">{url.name}</h3>
-            </Card>
-        ));
+        if (urls.length === 0) return <div style={{ width: "calc(90vw)" }}></div>;
+        else {
+            return urls.map((url, index) => (
+                <Card key={`url${index}`} target="_blank" href={url.url} onClick={() => setUrlToLatest(url.name)}>
+                    <ImageContainer>
+                        <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
+                    </ImageContainer>
+                    <h3 className="w-[80%] my-[10px]">{url.name}</h3>
+                </Card>
+            ));
+        }
     }, [urls]);
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { presetData } from "../consts/interface";
 import { useUserData } from "../provider/UserDataProvider";
@@ -60,20 +60,18 @@ const ImageContainer = styled.div`
 
 const PresetList = ({ presets }: { presets: Array<presetData> }) => {
     const { user, setPresetToLatest } = useUserData();
-    const [card, setCard] = useState<JSX.Element[]>([]);
-
-    useEffect(() => {
-        setCard([]);
-        setCard(
-            presets.map((preset, index) => (
+    const card = useMemo(() => {
+        if (presets.length === 0) return <div style={{ width: "calc(90vw)" }}></div>;
+        else {
+            return presets.map((preset, index) => (
                 <Card key={`preset${index}`} to={"/presets/" + preset.name} onClick={() => setPresetToLatest(preset.name)}>
                     <ImageContainer>
                         <img src={preset.image} alt={preset.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
                     </ImageContainer>
                     <h3 className="w-[80%] my-[5px]">{preset.name}</h3>
                 </Card>
-            ))
-        );
+            ));
+        }
     }, [presets]);
 
     return (
