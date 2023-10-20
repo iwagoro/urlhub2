@@ -23,10 +23,15 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-    const { user, urls, getRecentUrls, presets, getRecentPresets } = useUserData();
+    const { urls, presets, getRecentPresets, getRecentUrls } = useUserData();
+
+    useEffect(() => {
+        getRecentUrls();
+        getRecentPresets();
+    }, []);
 
     return (
-        <div className="flex flex-col">
+        <div className=" w-[100%] max-w-[1500px] flex flex-col">
             <Greet />
             <div className="py-[2.5vw]">
                 <Divider text="Recent Urls" type="left" />

@@ -53,7 +53,8 @@ const PresetCard = ({ presets }: { presets: Array<presetData> }) => {
                     <ImageContainer>
                         <img src={preset.image} alt={preset.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
                     </ImageContainer>
-                    <h3 className="w-[80%] my-[5px]">{preset.name}</h3>
+                    <h3 className="w-[80%] mt-[10px]">{preset.name}</h3>
+                    <h4 className="w-[80%] mb-[10px]">type:preset</h4>
                 </Card>
             ));
         }

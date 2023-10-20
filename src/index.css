@@ -31,11 +31,21 @@ h2 {
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 18px;
 
     color: gray;
 
     @media (max-width: 640px) {
-        font-size: 9px;
+        font-size: 12px;
+    }
+}
+
+h4 {
+    font-size: 12px;
+
+    color: gray;
+
+    @media (max-width: 640px) {
+        font-size: 7px;
     }
 }

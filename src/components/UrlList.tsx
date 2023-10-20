@@ -43,7 +43,7 @@ const ImageContainer = styled.div`
     background-color: gray;
 `;
 
-const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
+const UrlList = ({ urls }: { urls: Array<urlData> }) => {
     const { user, setUrlToLatest } = useUserData();
 
     const card = useMemo(() => {
@@ -64,4 +64,4 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
     return <Container>{card}</Container>;
 };
 
-export default UrlCard;
+export default UrlList;

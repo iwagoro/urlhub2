@@ -13,17 +13,19 @@ interface ButtonProps {
 }
 
 const Container = styled.div`
-    width: 100vw;
-    height: 90px;
+    width: 100%;
+    max-width: 1500px;
+    height: 70px;
 
     position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     background-color: #f7fafc;
-
     @media (max-width: 480px) {
         height: 50px;
     }

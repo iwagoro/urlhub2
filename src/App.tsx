@@ -12,17 +12,11 @@ import PresetDetail from "./pages/PresetDetail";
 const App = () => {
     const { getRecentPresets, getRecentUrls, getNextRecentUrls } = useUserData();
 
-    useEffect(() => {
-        getRecentUrls();
-        getRecentPresets();
-    }, []);
-
     return (
-        <div className="w-screen h-auto mb-[5vh] overflow-x-hidden">
+        <div className=" h-auto mb-[5vh] overflow-x-hidden">
             <Router>
                 <Base />
-
-                <div className="flex items-center justify-center mt-[90px]">
+                <div className="flex items-center justify-center mt-[5vh]">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/presets" element={<Presets />} />

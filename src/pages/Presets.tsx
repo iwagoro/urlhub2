@@ -24,7 +24,7 @@ const Presets = () => {
     const { user, urls, getRecentUrls, presets, getRecentPresets } = useUserData();
 
     return (
-        <div className="flex flex-col">
+        <div className="w-[100%] max-w-[1500px] flex flex-col">
             <div className="py-[2.5vw]">
                 <Divider text="Recent Presets" type="left" />
                 <PresetCard presets={presets} />
