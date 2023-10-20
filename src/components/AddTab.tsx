@@ -110,7 +110,7 @@ const AddTab = () => {
                     <Tab label="Add Preset" value={2} sx={{ fontSize: "14px", "@media(max-width:480px)": { fontSize: "10px" } }} />
                 </Tabs>
                 <form className="w-[90%] flex flex-col  items-center" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="w-[90%] h-auto mt-[5%] flex  items-center">
+                    <div className="w-full h-auto mt-[5%] flex  items-center">
                         <ImageContainer>
                             <img src={image} className="aspect-square object-cover"></img>
                         </ImageContainer>
@@ -119,7 +119,7 @@ const AddTab = () => {
                             {value === 1 && <Input2 placeholder="URL link" {...register("url")} />}
                         </div>
                     </div>
-                    <div className="w-[90%] my-[3%] flex justify-end">
+                    <div className="w-full my-[3%] flex justify-end">
                         <Button type="submit">Save</Button>
                     </div>
                 </form>

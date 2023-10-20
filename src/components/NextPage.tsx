@@ -22,7 +22,8 @@ const Button = ({ type }: { type: string }) => {
 
     const incrementUrl = async () => {
         if (urls.length < MAX_CARD_LIMIT) return;
-        getNextRecentUrls(urls[urls.length - 1]);
+        const flag = await getNextRecentUrls(urls[urls.length - 1]);
+        if (flag === 0) return;
         setCount((prev) => prev + 1);
     };
 
@@ -32,9 +33,10 @@ const Button = ({ type }: { type: string }) => {
         setCount((prev) => prev - 1);
     };
 
-    const incrementPreset = () => {
+    const incrementPreset = async () => {
         if (presets.length < MAX_CARD_LIMIT) return;
-        getNextRecentPresets(presets[presets.length - 1]);
+        const flag = await getNextRecentPresets(presets[presets.length - 1]);
+        if (flag === 0) return;
         setCount((prev) => prev + 1);
     };
 

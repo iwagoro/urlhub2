@@ -26,17 +26,15 @@ export const useUrls = (user: string, num: number) => {
 
     const getNextRecentUrls = useCallback(async (url: urlData) => {
         const data = await getNextRecentData(user, "Urls", num, url.date);
+        if (data.length === 0) return 0;
         initUrls();
-        console.log("result:");
-        console.log(data);
         setUrls(data);
+        return 1;
     }, []);
 
     const getBeforeRecentUrls = useCallback(async (url: urlData) => {
         const data = await getBeforeRecentData(user, "Urls", num, url.date);
         initUrls();
-        console.log("result:");
-        console.log(data);
         setUrls(data);
     }, []);
 

@@ -21,17 +21,15 @@ export const usePresets = (user: string, num: number) => {
 
     const getNextRecentPresets = useCallback(async (preset: presetData) => {
         const data = await getNextRecentData(user, "Presets", num, preset.date);
+        if (data.length === 0) return 0;
         initPresets();
-        console.log("result:");
-        console.log(data);
         setPresets(data);
+        return 1;
     }, []);
 
     const getBeforeRecentPresets = useCallback(async (preset: presetData) => {
         const data = await getBeforeRecentData(user, "Presets", num, preset.date);
         initPresets();
-        console.log("result:");
-        console.log(data);
         setPresets(data);
     }, []);
 
