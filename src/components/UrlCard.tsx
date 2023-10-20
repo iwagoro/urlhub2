@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { urlData } from "../consts/interface";
 import { useUserData } from "../provider/UserDataProvider";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const Container = styled.div`
     width: 100%;
@@ -54,8 +55,18 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
                     <ImageContainer>
                         <img src={url.image} alt={url.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
                     </ImageContainer>
-                    <h3 className="w-[80%] mt-[10px]">{url.name}</h3>
-                    <h4 className="w-[80%] mb-[10px]">type:url</h4>
+                    <div className="w-[80%] flex items-center justify-between">
+                        <div>
+                            <h3 className=" mt-[10px]">{url.name}</h3>
+                            <h4 className=" mb-[10px]">type:url</h4>
+                        </div>
+                        <MoreVertIcon
+                            sx={{ color: "gray" }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                            }}
+                        />
+                    </div>
                 </Card>
             ));
         }

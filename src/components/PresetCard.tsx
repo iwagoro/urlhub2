@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { presetData } from "../consts/interface";
 import { useUserData } from "../provider/UserDataProvider";
 import { Link } from "react-router-dom";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const Container = styled.div`
     width: 100%;
@@ -53,8 +54,18 @@ const PresetCard = ({ presets }: { presets: Array<presetData> }) => {
                     <ImageContainer>
                         <img src={preset.image} alt={preset.name} style={{ aspectRatio: "1/1", objectFit: "cover" }} />
                     </ImageContainer>
-                    <h3 className="w-[80%] mt-[10px]">{preset.name}</h3>
-                    <h4 className="w-[80%] mb-[10px]">type:preset</h4>
+                    <div className="w-[80%] flex items-center justify-between">
+                        <div>
+                            <h3 className=" mt-[10px]">{preset.name}</h3>
+                            <h4 className=" mb-[10px]">type:preset</h4>
+                        </div>
+                        <MoreVertIcon
+                            sx={{ color: "gray" }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                            }}
+                        />
+                    </div>
                 </Card>
             ));
         }
