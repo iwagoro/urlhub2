@@ -1,6 +1,11 @@
 import SearchInput from "../components/SearchInput";
 import styled, { CSSObject } from "styled-components";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import AddIcon from "@mui/icons-material/Add";
+import { SwipeableDrawer } from "@mui/material";
+import AddTab from "../components/AddTab";
 
 interface ButtonProps {
     width?: string;
@@ -8,17 +13,16 @@ interface ButtonProps {
 }
 
 const Container = styled.div`
-    width: calc(100% - 5w);
+    width: 100vw;
     height: 90px;
+
+    position: fixed;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background-color: transparent;
-    border-radius: 10px;
-
-    margin: 2.5vw 2.5vw 0 2.5vw;
+    background-color: #f7fafc;
 
     @media (max-width: 480px) {
         height: 50px;
@@ -41,21 +45,37 @@ const Button = styled(Link)<ButtonProps>`
 `;
 
 const Base = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openDrawer = () => {
+        setIsOpen(true);
+    };
+    const closeDrawer = () => {
+        setIsOpen(false);
+    };
     return (
-        <Container>
-            <Button id="home-button" width="20%" to="/">
-                HOME
-            </Button>
-            <div className="w-[40%]">
-                <SearchInput />
-            </div>
-            <Button id="library-button" width="20%" to="/presets">
-                PRESETS
-            </Button>
-            <Button id="library-button" width="20%" to="/Urls">
-                URLS
-            </Button>
-        </Container>
+        <>
+            <Container>
+                <Button id="home-button" width="15%" to="/">
+                    HOME
+                </Button>
+                <div className="w-[40%]">
+                    <SearchInput />
+                </div>
+                <Button id="library-button" width="15%" to="/presets">
+                    PRESETS
+                </Button>
+                <Button id="library-button" width="15%" to="/Urls">
+                    URLS
+                </Button>
+                <div className="w-[15%] flex justify-center items-center text-[gray] cursor-pointer" onClick={() => setIsOpen(true)}>
+                    <AddIcon />
+                </div>
+            </Container>
+            <SwipeableDrawer anchor="bottom" open={isOpen} onOpen={openDrawer} onClose={closeDrawer}>
+                <AddTab />
+            </SwipeableDrawer>
+        </>
     );
 };
 
