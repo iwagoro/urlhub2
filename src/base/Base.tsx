@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
-import { SwipeableDrawer } from "@mui/material";
+import { Modal } from "@mui/material";
 import AddTab from "../components/AddTab";
 
 interface ButtonProps {
@@ -47,9 +47,6 @@ const Button = styled(Link)<ButtonProps>`
 const Base = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const openDrawer = () => {
-        setIsOpen(true);
-    };
     const closeDrawer = () => {
         setIsOpen(false);
     };
@@ -72,9 +69,9 @@ const Base = () => {
                     <AddIcon />
                 </div>
             </Container>
-            <SwipeableDrawer anchor="bottom" open={isOpen} onOpen={openDrawer} onClose={closeDrawer}>
+            <Modal open={isOpen} onClose={closeDrawer} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <AddTab />
-            </SwipeableDrawer>
+            </Modal>
         </>
     );
 };
