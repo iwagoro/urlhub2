@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Tabs, Tab, TextField } from "@mui/material";
 import { useUserData } from "../provider/UserDataProvider";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Button } from "@mui/material";
 
 const Container = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 `;
 
@@ -66,17 +68,23 @@ const AddTab = () => {
             </Tabs>
             <Container>
                 <div className="w-full flex flex-col justify-center items-center ">
-                    <h2 className="w-[40%] text-left my-[1vh]">ADD{value === 1 ? " URL" : " PRESET"}</h2>
-                    <div className="w-[40%] flex justify-between items-center">
+                    <h2 className="w-[35%] text-left my-[1vh]">ADD{value === 1 ? " URL" : " PRESET"}</h2>
+                    <div className="w-[35%] flex justify-between items-center">
                         <ImageContainer>
                             <img src={image} className="aspect-square object-cover"></img>
                         </ImageContainer>
                         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-between items-center h-full">
                             <Input label="Title" {...register("name")} color="secondary" />
-                            <Input label="Url" {...register("url")} color="secondary" multiline minRows="3" maxRows="3" />
+                            {value === 1 && <Input label="URL" {...register("url")} color="secondary" multiline minRows={4} maxRows={4} />}
                             <button type="submit" style={{ display: "none" }}></button> {/* ダミーのSubmitボタン */}
                         </form>
                     </div>
+                    <div className="w-[35%] my-[1vh] flex justify-end">
+                        <Button variant="contained" color="secondary">
+                            save
+                        </Button>
+                    </div>
+                    <div className="h-[10vh] w-full"></div>
                 </div>
             </Container>
         </>

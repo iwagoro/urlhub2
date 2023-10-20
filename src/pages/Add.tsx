@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 const Container = styled.div`
     width: calc(100% - 20px);
     height: 100%;
+
     background-color: #ececec;
 
     display: flex;
