@@ -5,8 +5,6 @@ import Divider from "../components/Divider";
 import UrlList from "../components/UrlList";
 import PresetList from "../components/PresetList";
 import Button from "../components/NextPage";
-import AddUrlButton from "../components/AddUrlButton";
-import AddPresetButton from "../components/AddPresetButton";
 
 const Container = styled.div`
     box-shadow: 0 1rem 2rem #cecece;
@@ -45,15 +43,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/*
-            <div className="w-ful flex mx-[2.5vw]">
-                <div className="w-[25%]">
-                    <AddUrlButton />
-                </div>
-                <div className="w-[25%]">
-                    <AddPresetButton />
-                </div>
-                <div className="w-[50%]"></div>
-            </div>
-*/

@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const Card = styled.a`
-    width: calc(100% / 9 - 2.5vw);
+    width: calc(100% / 6 - 2.5vw);
     cursor: pointer;
     margin: 10px 2.5vw;
 
