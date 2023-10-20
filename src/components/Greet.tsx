@@ -12,7 +12,6 @@ const Container = styled.div`
     align-items: center;
 
     background-color: transparent;
-    padding-top: 100px;
 
     margin: 2.5vw 2.5vw 0 2.5vw;
 `;
@@ -42,7 +41,11 @@ const Greet = () => {
 
     return (
         <Container>
-            <h1 className="w-full p-[5vw] text-left">{`${greet}   :   ${user}`}</h1>
+            <h1 className="w-full p-[5vw] text-left">
+                {greet}
+                <br />
+                USER:"{user}"
+            </h1>
         </Container>
     );
 };

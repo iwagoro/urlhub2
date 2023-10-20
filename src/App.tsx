@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Presets from "./pages/Presets";
 import Urls from "./pages/Urls";
 import SearchResult from "./pages/SearchResult";
-import Greet from "./components/Greet";
+import PresetDetail from "./pages/PresetDetail";
 
 const App = () => {
     const { getRecentPresets, getRecentUrls, getNextRecentUrls } = useUserData();
@@ -21,13 +21,14 @@ const App = () => {
         <div className="w-screen h-auto mb-[5vh] overflow-x-hidden">
             <Router>
                 <Base />
-                <Greet />
-                <div className="flex items-center justify-center">
+
+                <div className="flex items-center justify-center mt-[90px]">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/presets" element={<Presets />} />
                         <Route path="/search/:name" element={<SearchResult />} />
                         <Route path="/urls" element={<Urls />} />
+                        <Route path="/presets/:id" element={<PresetDetail />} />
                     </Routes>
                 </div>
             </Router>

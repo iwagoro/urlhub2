@@ -24,26 +24,26 @@ const Button = ({ type }: { type: string }) => {
         if (urls.length < MAX_CARD_LIMIT) return;
         const flag = await getNextRecentUrls(urls[urls.length - 1]);
         if (flag === 0) return;
-        setCount((prev) => prev + 1);
+        setCount(count + 1);
     };
 
     const decrementUrl = () => {
         if (count === 1) return;
         getBeforeRecentUrls(urls[urls.length - 1]);
-        setCount((prev) => prev - 1);
+        setCount(count - 1);
     };
 
     const incrementPreset = async () => {
         if (presets.length < MAX_CARD_LIMIT) return;
         const flag = await getNextRecentPresets(presets[presets.length - 1]);
         if (flag === 0) return;
-        setCount((prev) => prev + 1);
+        setCount(count + 1);
     };
 
     const decrementPreset = () => {
         if (count === 1) return;
         getBeforeRecentPresets(presets[presets.length - 1]);
-        setCount((prev) => prev - 1);
+        setCount(count - 1);
     };
 
     return (

@@ -1,38 +1,27 @@
 import { useEffect, useState } from "react";
 import { useUserData } from "../provider/UserDataProvider";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "../components/Divider";
 import UrlCard from "../components/UrlCard";
+import PresetCard from "../components/PresetCard";
 import Button from "../components/NextPage";
+import Greet from "../components/Greet";
 
-const Container = styled.div`
-    box-shadow: 0 1rem 2rem #cecece;
-    width: calc(100% - 5w);
-    height: auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    background-color: white;
-    border-radius: 20px;
-    margin: 2.5vw 2.5vw 0 2.5vw;
-`;
-
-const Urls = () => {
+const PresetDetail = () => {
     const { user, urls, getRecentUrls, presets, getRecentPresets } = useUserData();
+    const { id } = useParams();
 
     return (
         <div className="flex flex-col">
             <div className="py-[2.5vw]">
-                <Divider text="Recent Urls" type="left" />
+                <Divider text={id || ""} type="left" />
                 <UrlCard urls={urls} />
-                <Button type="url" />
-                <Divider text="Recent Urls" type="right" />
+                <Button type={"url"} />
+                <Divider text={id || ""} type="right" />
             </div>
         </div>
     );
 };
 
-export default Urls;
+export default PresetDetail;

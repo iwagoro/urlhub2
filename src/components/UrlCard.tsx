@@ -7,15 +7,16 @@ const Container = styled.div`
     width: 100%;
     padding: 0vw 2.5vw;
     height: auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     flex-wrap: wrap;
+    grid-gap: 2vw;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
 `;
 
 const Card = styled.a`
-    width: calc(100% / 6 - 2.5vw);
+    width: 100%;
     cursor: pointer;
-    margin: 10px 2.5vw;
 
     border-radius: 20px;
 
@@ -25,21 +26,6 @@ const Card = styled.a`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    @media (max-width: 1770px) {
-        width: calc(100% / 4 - 5vw);
-        font-size: 2vw;
-    }
-
-    @media (max-width: 1200px) {
-        width: calc(100% / 3 - 5vw);
-        font-size: 2vw;
-    }
-
-    @media (max-width: 768px) {
-        width: calc(100% / 2 - 5vw);
-        font-size: 2vw;
-    }
 `;
 const ImageContainer = styled.div`
     width: 80%;
@@ -57,7 +43,7 @@ const ImageContainer = styled.div`
     background-color: gray;
 `;
 
-const UrlList = ({ urls }: { urls: Array<urlData> }) => {
+const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
     const { user, setUrlToLatest } = useUserData();
 
     const card = useMemo(() => {
@@ -74,12 +60,7 @@ const UrlList = ({ urls }: { urls: Array<urlData> }) => {
         }
     }, [urls]);
 
-    return (
-        <Container>
-            {card}
-            <div className="h-[10px] flex-1" />
-        </Container>
-    );
+    return <Container>{card}</Container>;
 };
 
-export default UrlList;
+export default UrlCard;

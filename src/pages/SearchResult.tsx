@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useUserData } from "../provider/UserDataProvider";
-import UrlList from "../components/UrlList";
-import PresetList from "../components/PresetList";
+import UrlCard from "../components/UrlCard";
+import PresetCard from "../components/PresetCard";
 
 const SearchResult = () => {
     let { type, name } = useParams();
@@ -15,8 +15,8 @@ const SearchResult = () => {
 
     return (
         <div>
-            <UrlList urls={urls} />
-            <PresetList presets={presets} />
+            <UrlCard urls={urls} />
+            <PresetCard presets={presets} />
         </div>
     );
 };

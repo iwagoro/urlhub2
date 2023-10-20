@@ -97,6 +97,7 @@ const AddTab = () => {
     }, []);
 
     const onSubmit: SubmitHandler<{ name: string; url: string }> = (data) => {
+        if (data.name === "") return;
         value === 1 ? addUrl(data.name, data.url, image) : addPreset(data.name, image);
         reset();
         initImage();

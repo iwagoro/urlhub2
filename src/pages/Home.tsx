@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useUserData } from "../provider/UserDataProvider";
 import styled from "styled-components";
 import Divider from "../components/Divider";
-import UrlList from "../components/UrlList";
-import PresetList from "../components/PresetList";
+import UrlCard from "../components/UrlCard";
+import PresetCard from "../components/PresetCard";
 import Button from "../components/NextPage";
+import Greet from "../components/Greet";
 
 const Container = styled.div`
     box-shadow: 0 1rem 2rem #cecece;
@@ -26,15 +27,16 @@ const Home = () => {
 
     return (
         <div className="flex flex-col">
+            <Greet />
             <div className="py-[2.5vw]">
                 <Divider text="Recent Urls" type="left" />
-                <UrlList urls={urls} />
+                <UrlCard urls={urls} />
                 <Button type={"url"} />
                 <Divider text="Recent Urls" type="right" />
             </div>
             <div className="py-[2.5vw]">
                 <Divider text="Recent Presets" type="left" />
-                <PresetList presets={presets} />
+                <PresetCard presets={presets} />
                 <Button type={"preset"} />
                 <Divider text="Recent Presets" type="right" />
             </div>
