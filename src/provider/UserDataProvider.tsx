@@ -16,8 +16,11 @@ const UserContext = createContext(
         getNextRecentUrls: (url: urlData) => Promise<number>;
         getBeforeRecentUrls: (url: urlData) => void;
         getUrlsWithName: (name: string) => void;
+        getUrlsWithArray: (array: string[]) => void;
         setUrlToLatest: (name: string) => void;
         addUrl: (name: string, url: string, image: string) => void;
+        updateUrl: (name: string, data: any) => void;
+        deleteUrl: (name: string) => void;
         presets: presetData[];
         initPresets: () => void;
         getPresets: () => void;
@@ -35,7 +38,7 @@ const UserContext = createContext(
 
 export const UserDataProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<string>("test@gmail.com");
-    const { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithName, setUrlToLatest, addUrl } = useUrls(user, MAX_CARD_LIMIT);
+    const { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithArray, getUrlsWithName, setUrlToLatest, addUrl, updateUrl, deleteUrl } = useUrls(user, MAX_CARD_LIMIT);
     const { presets, initPresets, getPresets, getRecentPresets, getNextRecentPresets, getBeforeRecentPresets, getPresetsWithName, setPresetToLatest, addPreset } = usePresets(user, MAX_CARD_LIMIT);
     const { image, generateImage, initImage } = useImage();
 
@@ -49,8 +52,11 @@ export const UserDataProvider = ({ children }: { children: React.ReactNode }) =>
         getNextRecentUrls,
         getBeforeRecentUrls,
         getUrlsWithName,
+        getUrlsWithArray,
         setUrlToLatest,
         addUrl,
+        updateUrl,
+        deleteUrl,
         presets,
         initPresets,
         getPresets,

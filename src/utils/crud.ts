@@ -14,6 +14,17 @@ const getData = async (email: string, type: string, num: number) => {
     return data;
 };
 
+const getDataWithArray = async (email: string, type: string, array: string[], num: number) => {
+    let data: any = [];
+    const collectionRef = collection(db, "User", email, type);
+    const q = query(collectionRef, where("presets", "array-contains-any", array), limit(num));
+    const snapshot = await getDocs(q);
+    snapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加
+    });
+    return data;
+};
+
 const getNextRecentData = async (email: string, type: string, num: number, start: Date) => {
     let data: any = [];
     const collectionRef = collection(db, "User", email, type);
@@ -48,13 +59,23 @@ const getRecentData = async (email: string, type: string, num: number) => {
     return data;
 };
 
+const getDataWithName = async (email: string, type: string, array: string, num: number) => {
+    let data: any = [];
+    const collectionRef = collection(db, "User", email, type);
+    const q = query(collectionRef, where("name", "in", array), limit(num));
+    const snapshot = await getDocs(q);
+    snapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加
+    });
+};
+
 //get url/preset data with field name
 const getDataWithLowName = async (email: string, type: string, name: string, num: number) => {
     let data: any = [];
     const collectionRef = collection(db, "User", email, type);
+    console.log(name);
     const q = query(collectionRef, orderBy("lowName"), startAt(name.toLowerCase()), endAt(name.toLocaleLowerCase() + "\uf8ff"), limit(num));
     const snapshot = await getDocs(q);
-    const result = snapshot.docs.map((doc) => doc.data());
     snapshot.forEach((doc) => {
         data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加
     });
@@ -79,4 +100,9 @@ const updateData = async (email: string, type: string, name: string, data: any) 
     await updateDoc(docRef, data);
 };
 
-export { getData, setData, updateData, addData, getDataWithLowName, getRecentData, getNextRecentData, getBeforeRecentData };
+const deleteData = async (email: string, type: string, name: string) => {
+    const docRef = doc(db, "User", email, type, name);
+    await deleteDoc(docRef);
+};
+
+export { getData, setData, updateData, addData, getDataWithLowName, getRecentData, getNextRecentData, getBeforeRecentData, getDataWithArray, deleteData };

@@ -5,15 +5,16 @@ import styled from "styled-components";
 import Divider from "../components/Divider";
 import UrlList from "../components/UrlList";
 import Button from "../components/NextPage";
-import Greet from "../components/Greet";
 
 const PresetDetail = () => {
-    const { user, initUrls, urls, getUrlsWithName } = useUserData();
+    const { user, initUrls, urls, getUrlsWithArray } = useUserData();
     const { id } = useParams();
 
     useEffect(() => {
         initUrls();
-        getUrlsWithName(id || "");
+        const data: string[] = [];
+        data.push(id || "");
+        getUrlsWithArray(data);
     }, [id]);
 
     return (

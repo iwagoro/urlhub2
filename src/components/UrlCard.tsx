@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import { urlData } from "../consts/interface";
 import { useUserData } from "../provider/UserDataProvider";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
+import MyMenu from "./MyMenu";
+import { set } from "react-hook-form";
 const Container = styled.div`
     width: 100%;
     padding: 0vw 2.5vw;
@@ -46,6 +47,7 @@ const ImageContainer = styled.div`
 
 const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
     const { user, setUrlToLatest } = useUserData();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const card = useMemo(() => {
         if (urls.length === 0) return <div style={{ width: "calc(90vw)" }}></div>;
@@ -60,19 +62,27 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
                             <h3 className=" mt-[10px]">{url.name}</h3>
                             <h4 className=" mb-[10px]">type:url</h4>
                         </div>
-                        <MoreVertIcon
-                            sx={{ color: "gray" }}
+                        <div
                             onClick={(e) => {
                                 e.preventDefault();
+                                localStorage.setItem("url", JSON.stringify(url));
+                                setAnchorEl(e.currentTarget);
                             }}
-                        />
+                        >
+                            <MoreVertIcon sx={{ color: "gray" }} />
+                        </div>
                     </div>
                 </Card>
             ));
         }
     }, [urls]);
 
-    return <Container>{card}</Container>;
+    return (
+        <>
+            <Container>{card}</Container>
+            <MyMenu anchorEl={anchorEl} setAnchorEl={setAnchorEl} />
+        </>
+    );
 };
 
 export default UrlCard;

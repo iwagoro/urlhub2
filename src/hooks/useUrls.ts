@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { urlData } from "../consts/interface";
-import { getData, getDataWithLowName, getRecentData, setData, updateData, getNextRecentData, getBeforeRecentData } from "../utils/crud";
+import { getData, getDataWithLowName, getRecentData, setData, updateData, getNextRecentData, getBeforeRecentData, getDataWithArray, deleteData } from "../utils/crud";
 
 export const useUrls = (user: string, num: number) => {
     const [urls, setUrls] = useState<urlData[]>([]);
@@ -14,9 +14,15 @@ export const useUrls = (user: string, num: number) => {
         setUrls(data);
     }, []);
 
+    const getUrlsWithArray = useCallback(async (array: string[]) => {
+        const data = await getDataWithArray(user, "Urls", array, num);
+        setUrls(data);
+    }, []);
+
     const getUrlsWithName = useCallback(async (name: string) => {
         const data = await getDataWithLowName(user, "Urls", name.toLowerCase(), num);
         setUrls(data);
+        console.log(data);
     }, []);
 
     const getRecentUrls = useCallback(async () => {
@@ -60,5 +66,15 @@ export const useUrls = (user: string, num: number) => {
         });
     }, []);
 
-    return { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithName, setUrlToLatest, addUrl };
+    const deleteUrl = useCallback(async (name: string) => {
+        await deleteData(user, "Urls", name);
+        setUrls((prev) => {
+            return prev.filter((item) => item.name !== name);
+        });
+    }, []);
+
+    const updateUrl = useCallback(async (name: string, data: any) => {
+        await updateData(user, "Urls", name, data);
+    }, []);
+    return { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithName, setUrlToLatest, addUrl, getUrlsWithArray, updateUrl, deleteUrl };
 };
