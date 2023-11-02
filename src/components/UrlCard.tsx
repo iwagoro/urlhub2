@@ -42,21 +42,12 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
                     <ImageCard src="" />
                     <FlexBox w="80%" j="space-between" a="center">
                         <div className="ml-[4px]">
-                            <h3 className=" mt-[10px] font-black" style={{ fontFamily: "Flow Circular" }}>
+                            <h3 className=" mt-[10px] font-black  text-[lightgray]" style={{ fontFamily: "Flow Circular" }}>
                                 aaaaaaaaaaa
                             </h3>
-                            <h4 className=" mb-[10px] font-black" style={{ fontFamily: "Flow Circular" }}>
+                            <h4 className=" mb-[10px] font-black text-[lightgray] " style={{ fontFamily: "Flow Circular" }}>
                                 aaaaaaa
                             </h4>
-                        </div>
-                        <div
-                            onClick={(e) => {
-                                e.preventDefault();
-                                localStorage.setItem("url", JSON.stringify({ name: "empty", url: "", image: "" }));
-                                setAnchorEl(e.currentTarget);
-                            }}
-                        >
-                            <MoreVertIcon sx={{ color: "gray" }} />
                         </div>
                     </FlexBox>
                 </Card>

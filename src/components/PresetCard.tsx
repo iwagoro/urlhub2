@@ -32,10 +32,10 @@ const PresetCard = ({ presets }: { presets: Array<presetData> }) => {
                     <ImageCard src="" />
                     <FlexBox w="80%" j="between" a="center">
                         <div className="ml-[4px]">
-                            <h3 className=" mt-[10px] " style={{ fontFamily: "Flow Circular" }}>
+                            <h3 className=" mt-[10px] text-[lightgray]" style={{ fontFamily: "Flow Circular" }}>
                                 aaaaaaaaaaa
                             </h3>
-                            <h4 className=" mb-[10px]" style={{ fontFamily: "Flow Circular" }}>
+                            <h4 className=" mb-[10px] text-[lightgray]" style={{ fontFamily: "Flow Circular" }}>
                                 aaaaaaa
                             </h4>
                         </div>

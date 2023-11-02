@@ -9,11 +9,9 @@ const ImageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border: 1px solid gray;
     border-radius: 10px;
 
-    background-color: gray;
+    background-color: lightgray;
 `;
 
 export const ImageCard = ({ src }: { src: string }) => {

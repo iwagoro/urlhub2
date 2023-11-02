@@ -13,8 +13,23 @@ const Line = styled.div<LineProps>`
     ${(props) => props.style}
 `;
 
+const LineContainer = styled.div`
+    flex-grow: 1;
+    overflow: hidden;
+    color: gray;
+    font-size: 20px;
+    opacity: 0.2;
+    letter-spacing: 0.5px;
+
+    @media (max-width: 640px) {
+        font-size: 10px;
+    }
+`;
+
 const Text = styled.h2`
-    width: 25%;
+    width: auto;
+    white-space: nowrap;
+    padding: 0 20px;
     font-weight: bold;
     font-family: "Libre Barcode 128 Text";
     font-size: 40px;
@@ -23,7 +38,7 @@ const Text = styled.h2`
     color: gray;
 
     @media (max-width: 640px) {
-        font-size: 20px;
+        font-size: 25px;
     }
 `;
 
@@ -39,10 +54,10 @@ const Divider = ({ text, type }: { text: string; type: string }) => {
     if (type === "right") {
         return (
             <Container>
-                <div className="w-[75%] overflow-hidden text-[gray] opacity-[0.2] tracking-wider">
+                <LineContainer>
                     <Line />
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                </div>
+                </LineContainer>
 
                 <Text>{text}</Text>
             </Container>
@@ -51,10 +66,10 @@ const Divider = ({ text, type }: { text: string; type: string }) => {
         return (
             <Container>
                 <Text>{text}</Text>
-                <div className="w-[75%] overflow-hidden text-[gray] opacity-[0.2] tracking-wider">
+                <LineContainer>
                     <Line />
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                </div>
+                </LineContainer>
             </Container>
         );
     } else if (type === "none") {

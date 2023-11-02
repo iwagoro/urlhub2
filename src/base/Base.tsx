@@ -20,6 +20,7 @@ const Container = styled.div`
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
+    padding: 0 2.5vw;
 
     display: flex;
     justify-content: space-between;
@@ -35,6 +36,7 @@ const Button = styled(Link)<ButtonProps>`
     text-decoration: none;
     text-align: center;
     font-size: 20px;
+    font-weight: bold;
     color: gray;
     border-radius: 5px;
     ${(props) => props.style} // props.styleをそのまま適用する
@@ -42,7 +44,7 @@ const Button = styled(Link)<ButtonProps>`
     }
 
     @media (max-width: 640px) {
-        font-size: 14px;
+        font-size: 12px;
     }
 `;
 
@@ -58,7 +60,7 @@ const Base = () => {
                 <Button id="home-button" width="15%" to="/">
                     HOME
                 </Button>
-                <div className="w-[40%]">
+                <div className="w-[35%]">
                     <SearchInput />
                 </div>
                 <Button id="library-button" width="15%" to="/presets">
@@ -67,7 +69,7 @@ const Base = () => {
                 <Button id="library-button" width="15%" to="/Urls">
                     URL
                 </Button>
-                <div className="w-[15%] flex justify-center items-center text-[gray] cursor-pointer" onClick={() => setIsOpen(true)}>
+                <div className="w-[10%] flex justify-center items-center text-[gray] cursor-pointer" onClick={() => setIsOpen(true)}>
                     <AddIcon />
                 </div>
             </Container>
