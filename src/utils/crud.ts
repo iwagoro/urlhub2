@@ -1,4 +1,4 @@
-import db from "../utils/firebase";
+import { db } from "../utils/firebase";
 import { collection, getDocs, doc, setDoc, deleteDoc, updateDoc, addDoc, query, limit, where, orderBy, startAt, endAt, startAfter, endBefore } from "firebase/firestore";
 
 //get url/preset data
@@ -57,16 +57,6 @@ const getRecentData = async (email: string, type: string, num: number) => {
     });
 
     return data;
-};
-
-const getDataWithName = async (email: string, type: string, array: string, num: number) => {
-    let data: any = [];
-    const collectionRef = collection(db, "User", email, type);
-    const q = query(collectionRef, where("name", "in", array), limit(num));
-    const snapshot = await getDocs(q);
-    snapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() }); // ドキュメントのデータをオブジェクトとして追加
-    });
 };
 
 //get url/preset data with field name

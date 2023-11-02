@@ -7,7 +7,7 @@ interface LineProps {
 const Line = styled.div<LineProps>`
     width: 75%;
     height: 2px;
-    background-color: aquamarine;
+    background-color: gray;
     opacity: 0.2;
     ${(props) => props.style}
 `;

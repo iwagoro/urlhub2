@@ -41,11 +41,8 @@ const Greet = () => {
 
     return (
         <Container>
-            <h1 className="w-full p-[5vw] text-left">
-                {greet}
-                <br />
-                USER:"{user}"
-            </h1>
+            <h1 className="w-full  text-left">{greet}</h1>
+            <h2 className="w-full  text-left pl-[10px] font-bold">USER:"{user}"</h2>
         </Container>
     );
 };

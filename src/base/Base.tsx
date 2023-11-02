@@ -1,7 +1,7 @@
 import SearchInput from "../components/SearchInput";
 import styled, { CSSObject } from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import { Modal } from "@mui/material";

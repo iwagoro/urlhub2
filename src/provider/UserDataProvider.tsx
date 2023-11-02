@@ -10,7 +10,7 @@ const UserContext = createContext(
         user: string;
         setUser: React.Dispatch<React.SetStateAction<string>>;
         urls: urlData[];
-        initUrls: () => void; // Change "intiUrls" to "initUrls"
+        initUrls: () => void;
         getUrls: () => void;
         getRecentUrls: () => void;
         getNextRecentUrls: (url: urlData) => Promise<number>;
@@ -37,7 +37,7 @@ const UserContext = createContext(
 );
 
 export const UserDataProvider = ({ children }: { children: React.ReactNode }) => {
-    const [user, setUser] = useState<string>("test@gmail.com");
+    const [user, setUser] = useState<string>("");
     const { urls, initUrls, getUrls, getRecentUrls, getNextRecentUrls, getBeforeRecentUrls, getUrlsWithArray, getUrlsWithName, setUrlToLatest, addUrl, updateUrl, deleteUrl } = useUrls(user, MAX_CARD_LIMIT);
     const { presets, initPresets, getPresets, getRecentPresets, getNextRecentPresets, getBeforeRecentPresets, getPresetsWithName, setPresetToLatest, addPreset } = usePresets(user, MAX_CARD_LIMIT);
     const { image, generateImage, initImage } = useImage();

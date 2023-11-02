@@ -3,7 +3,7 @@ import { useUserData } from "../provider/UserDataProvider";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Divider from "../components/Divider";
-import UrlList from "../components/UrlList";
+import UrlCard from "../components/UrlCard";
 import Button from "../components/NextPage";
 
 const PresetDetail = () => {
@@ -21,7 +21,7 @@ const PresetDetail = () => {
         <div className="w-[100%] max-w-[1500px] flex flex-col">
             <div className="py-[2.5vw]">
                 <Divider text={id || ""} type="left" />
-                <UrlList urls={urls} />
+                <UrlCard urls={urls} />
                 <Button type={"url"} />
                 <Divider text={id || ""} type="right" />
             </div>
