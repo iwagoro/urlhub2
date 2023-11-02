@@ -15,9 +15,15 @@ const Line = styled.div<LineProps>`
 const Text = styled.h2`
     width: 25%;
     font-weight: bold;
+    font-family: "Libre Barcode 128 Text";
+    font-size: 40px;
     text-align: center;
     border-radius: 10px;
     color: gray;
+
+    @media (max-width: 640px) {
+        font-size: 20px;
+    }
 `;
 
 const Container = styled.div`

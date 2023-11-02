@@ -25,7 +25,7 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    background-color: #f7fafc;
+    background-color: #efefef;
     @media (max-width: 480px) {
         height: 50px;
     }

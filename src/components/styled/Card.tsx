@@ -6,8 +6,7 @@ export const Card = styled.a`
     cursor: pointer;
 
     border-radius: 20px;
-
-    box-shadow: 0 1rem 2rem #cecece;
+    background-color: white;
 
     display: flex;
     flex-direction: column;
