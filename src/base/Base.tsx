@@ -34,15 +34,15 @@ const Button = styled(Link)<ButtonProps>`
     width: ${(props) => (props.width ? props.width : "auto")};
     text-decoration: none;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     color: gray;
     border-radius: 5px;
     ${(props) => props.style} // props.styleをそのまま適用する
     &:hover {
     }
 
-    @media (max-width: 480px) {
-        font-size: 10px;
+    @media (max-width: 640px) {
+        font-size: 14px;
     }
 `;
 
@@ -62,10 +62,10 @@ const Base = () => {
                     <SearchInput />
                 </div>
                 <Button id="library-button" width="15%" to="/presets">
-                    PRESETS
+                    PRESET
                 </Button>
                 <Button id="library-button" width="15%" to="/Urls">
-                    URLS
+                    URL
                 </Button>
                 <div className="w-[15%] flex justify-center items-center text-[gray] cursor-pointer" onClick={() => setIsOpen(true)}>
                     <AddIcon />

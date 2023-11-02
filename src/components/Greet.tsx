@@ -3,7 +3,7 @@ import { useUserData } from "../provider/UserDataProvider";
 import styled from "styled-components";
 
 const Container = styled.div`
-    width: calc(100% - 5w);
+    width: calc(100% - 10w);
     height: auto;
 
     display: flex;
@@ -13,7 +13,7 @@ const Container = styled.div`
 
     background-color: transparent;
 
-    margin: 2.5vw 2.5vw 0 2.5vw;
+    margin: 5vw 5vw 0 5vw;
 `;
 const Greet = () => {
     const [greet, setGreet] = useState<string>("Hello");
@@ -42,7 +42,7 @@ const Greet = () => {
     return (
         <Container>
             <h1 className="w-full  text-left">{greet}</h1>
-            <h2 className="w-full  text-left pl-[10px] font-bold">USER:"{user}"</h2>
+            <h2 className="w-full  text-left  font-bold"> USER:"{user}"</h2>
         </Container>
     );
 };

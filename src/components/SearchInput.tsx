@@ -42,9 +42,9 @@ const SearchInput = () => {
                         color: "gray",
                         cursor: "pointer",
                         marginBottom: "2px",
-                        "@media (max-width: 480px)": {
+                        "@media (max-width: 640px)": {
                             left: "-12px",
-                            fontSize: "12px",
+                            fontSize: "14px",
                         },
                     }}
                 />
