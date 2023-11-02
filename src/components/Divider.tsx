@@ -5,10 +5,11 @@ interface LineProps {
 }
 
 const Line = styled.div<LineProps>`
-    width: 75%;
+    width: 100%;
     height: 2px;
     background-color: gray;
-    opacity: 0.2;
+
+    opacity: 0.4;
     ${(props) => props.style}
 `;
 
@@ -38,7 +39,11 @@ const Divider = ({ text, type }: { text: string; type: string }) => {
     if (type === "right") {
         return (
             <Container>
-                <Line />
+                <div className="w-[75%] overflow-hidden text-[gray] opacity-[0.2] tracking-wider">
+                    <Line />
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                </div>
+
                 <Text>{text}</Text>
             </Container>
         );
@@ -46,7 +51,10 @@ const Divider = ({ text, type }: { text: string; type: string }) => {
         return (
             <Container>
                 <Text>{text}</Text>
-                <Line />
+                <div className="w-[75%] overflow-hidden text-[gray] opacity-[0.2] tracking-wider">
+                    <Line />
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                </div>
             </Container>
         );
     } else if (type === "none") {
