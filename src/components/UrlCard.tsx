@@ -18,7 +18,7 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
             result.push(
                 <Card key={`url${index}`} target="_blank" href={url.url} onClick={() => setUrlToLatest(url.name)}>
                     <ImageCard src={url.image} />
-                    <FlexBox w="80%" j="between" a="center">
+                    <FlexBox w="80%" j="space-between" a="center">
                         <div>
                             <h3 className=" mt-[10px]">{url.name}</h3>
                             <h4 className=" mb-[10px]">type:url</h4>
@@ -40,7 +40,7 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
             result.push(
                 <Card key={`url${i}`}>
                     <ImageCard src="" />
-                    <FlexBox w="80%" j="between" a="center">
+                    <FlexBox w="80%" j="space-between" a="center">
                         <div className="ml-[4px]">
                             <h3 className=" mt-[10px] font-black" style={{ fontFamily: "Flow Circular" }}>
                                 aaaaaaaaaaa

@@ -1,4 +1,8 @@
 import React from "react";
-export const FlexBox = ({ children, j, a, w }: { children: React.ReactNode; j: string; a: string; w: string }) => {
-    return <div className={`flex items-${a} justify-${j} w-[${w}]`}>{children}</div>;
-};
+import styled from "styled-components";
+export const FlexBox = styled.div<{ j: string; a: string; w: string }>`
+    display: flex;
+    justify-content: ${(props) => props.j};
+    align-items: ${(props) => props.a};
+    width: ${(props) => props.w};
+`;
