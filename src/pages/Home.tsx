@@ -34,16 +34,16 @@ const Home = () => {
         <div className=" w-[100%] max-w-[1500px] flex flex-col">
             <Greet />
             <div className="py-[2.5vw]">
-                <Divider text="Recent Urls" type="left" />
+                <Divider text="RECENT URLS" type="left" />
                 <UrlCard urls={urls} />
                 <Button type={"url"} />
-                <Divider text="Recent Urls" type="right" />
+                <Divider text="RECENT URLS" type="right" />
             </div>
             <div className="py-[2.5vw]">
-                <Divider text="Recent Presets" type="left" />
+                <Divider text="RECENT PRESETS" type="left" />
                 <PresetCard presets={presets} />
                 <Button type={"preset"} />
-                <Divider text="Recent Presets" type="right" />
+                <Divider text="RECENT PRESETS" type="right" />
             </div>
         </div>
     );

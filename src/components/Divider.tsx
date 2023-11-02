@@ -2,23 +2,24 @@ import styled, { CSSObject } from "styled-components";
 
 interface LineProps {
     style?: CSSObject;
+    color?: string;
 }
 
 const Line = styled.div<LineProps>`
     width: 100%;
     height: 2px;
-    background-color: gray;
+    background-color: ${(props) => (props.color ? props.color : "gray")};
 
     opacity: 0.4;
     ${(props) => props.style}
 `;
 
-const LineContainer = styled.div`
+const LineContainer = styled.div<{ color?: string }>`
     flex-grow: 1;
     overflow: hidden;
-    color: gray;
+    color: ${(props) => (props.color ? props.color : "gray")};
     font-size: 20px;
-    opacity: 0.2;
+    opacity: 0.4;
     letter-spacing: 0.5px;
 
     @media (max-width: 640px) {
@@ -26,7 +27,7 @@ const LineContainer = styled.div`
     }
 `;
 
-const Text = styled.h2`
+const Text = styled.h2<{ color?: string }>`
     width: auto;
     white-space: nowrap;
     padding: 0 20px;
@@ -35,7 +36,7 @@ const Text = styled.h2`
     font-size: 40px;
     text-align: center;
     border-radius: 10px;
-    color: gray;
+    color: ${(props) => (props.color ? props.color : "gray")};
 
     @media (max-width: 640px) {
         font-size: 25px;
@@ -50,13 +51,13 @@ const Container = styled.div`
     align-items: center;
 `;
 
-const Divider = ({ text, type }: { text: string; type: string }) => {
+const Divider = ({ text, type, color }: { text: string; type: string; color?: string }) => {
     if (type === "right") {
         return (
             <Container>
                 <LineContainer>
-                    <Line />
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    <Line />
                 </LineContainer>
 
                 <Text>{text}</Text>
@@ -65,9 +66,9 @@ const Divider = ({ text, type }: { text: string; type: string }) => {
     } else if (type === "left") {
         return (
             <Container>
-                <Text>{text}</Text>
-                <LineContainer>
-                    <Line />
+                <Text color={color}>{text}</Text>
+                <LineContainer color={color}>
+                    <Line color={color} />
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 </LineContainer>
             </Container>

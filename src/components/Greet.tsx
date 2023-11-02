@@ -22,11 +22,11 @@ const Greet = () => {
     const createGreet = () => {
         const currentHour = new Date().getHours();
         if (currentHour >= 5 && currentHour < 12) {
-            setGreet("Good Morning");
+            setGreet("GOOD MORNING");
         } else if (currentHour >= 12 && currentHour < 18) {
-            setGreet("Good Afternoon");
+            setGreet("GOOD AFTERNOON");
         } else {
-            setGreet("Good Evening");
+            setGreet("GOOD EVENING");
         }
     };
 
