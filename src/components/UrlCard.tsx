@@ -38,7 +38,7 @@ const UrlCard = ({ urls }: { urls: Array<urlData> }) => {
         });
         for (let i = 0; i < MAX_CARD_LIMIT - urls.length; i++) {
             result.push(
-                <Card key={`url${i}`}>
+                <Card key={`fake-url${i}`}>
                     <ImageCard src="" />
                     <FlexBox w="80%" j="space-between" a="center">
                         <div className="ml-[4px]">

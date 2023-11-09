@@ -3,74 +3,18 @@ import styled from "styled-components";
 import { Tabs, Tab, TextField } from "@mui/material";
 import { useUserData } from "../provider/UserDataProvider";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Divider from "./Divider";
-
-const ModalContainer = styled.div`
-    position: relative;
-    max-width: 100%;
-    width: 80%;
-    text-align: center;
-
-    &:after,
-    &:before {
-        content: "";
-        width: 60px;
-        height: 60px;
-        position: absolute;
-        display: inline-block;
-    }
-
-    &:before {
-        border-left: solid 10px white;
-        border-top: solid 10px white;
-        top: 0;
-        left: 0;
-    }
-
-    &:after {
-        border-right: solid 10px white;
-        border-bottom: solid 10px white;
-        bottom: 0;
-        right: 0;
-    }
-`;
-
-const ModalContainer2 = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 3px;
-    text-align: center;
-
-    &:after,
-    &:before {
-        content: "";
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        display: inline-block;
-    }
-
-    &:before {
-        border-left: solid 5px white;
-        border-bottom: solid 5px white;
-        bottom: 0;
-        left: 0;
-    }
-
-    &:after {
-        border-right: solid 5px white;
-        border-top: solid 5px white;
-        top: 0;
-        right: 0;
-    }
-`;
+import { Switch } from "@mui/material";
+import { get } from "http";
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
+    max-width: 1000px;
+    width: 80%;
+    height: auto;
     border: 3px solid white;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(50, 50, 50, 0.8);
+    background: repeating-linear-gradient(-45deg, transparent, transparent 15px, gray 0, gray 30px);
+
+    border-radius: 20px;
 
     display: flex;
     flex-direction: column;
@@ -147,8 +91,12 @@ const Input = styled.input`
     border: 1px solid white;
     outline: none;
     padding: 0 10px;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 2;
+
+    &::placeholder {
+        color: lightgray;
+    }
 `;
 
 const Input2 = styled.textarea`
@@ -158,21 +106,26 @@ const Input2 = styled.textarea`
     border: 1px solid white;
     padding: 0 10px;
     outline: none;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 2;
     resize: none;
 
     @media (max-width: 480px) {
         font-size: 10px;
     }
+
+    &::placeholder {
+        color: lightgray;
+    }
 `;
 
 const Button = styled.button`
-    width: 70px;
-    aspect-ratio: 5/3;
-    border-radius: 30px;
-    border: 1px solid gray;
-    color: gray;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px dashed white;
+    color: white;
+    margin: 50px;
 
     @media (max-width: 480px) {
         width: 40px;
@@ -181,48 +134,59 @@ const Button = styled.button`
 `;
 
 const AddTab = () => {
-    const [value, setValue] = useState(1);
+    const [type, setType] = useState(true);
     const { image, generateImage, initImage } = useUserData();
-    const { register, handleSubmit, reset } = useForm<{ name: string; url: string }>();
+    const { register, getValues, reset } = useForm<{ name: string; url: string }>();
     const { user, addPreset, addUrl } = useUserData();
-
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
 
     useEffect(() => {
         generateImage();
     }, []);
 
-    const onSubmit: SubmitHandler<{ name: string; url: string }> = (data) => {
-        if (data.name === "") return;
-        value === 1 ? addUrl(data.name, data.url, image) : addPreset(data.name, image);
-        reset();
-        initImage();
+    const onClick = () => {
+        const title = getValues("name");
+        const url = getValues("url");
+        console.log("preset");
+        console.log(title, image);
+        if (type) {
+            addUrl(title, url, image);
+        } else {
+            addPreset(title, image);
+        }
     };
 
     return (
-        <ModalContainer>
-            <ModalContainer2>
-                <Container>
-                    <h1 className=" text-white">ADD URL</h1>
-                    <form className="flex flex-col w-full justify-between items-center mb-[2vw]">
-                        <Divider text="TITLE" type="left" color="white" />
+        <Container>
+            <div className="w-[80%] py-[2vw] flex  items-center">
+                <Switch
+                    defaultChecked
+                    sx={{ m: 1 }}
+                    onChange={() => {
+                        setType((prev) => (prev = !prev));
+                    }}
+                ></Switch>
+                <h1 className="grow text-left text-[white]">ADD {type ? "URL" : "PRESET"}</h1>
+            </div>
+            <div className="flex flex-col w-full  items-center h-[60%]">
+                <p className="w-[80%] py-[20px] text-left text-white">TITLE</p>
+                <InputContainer>
+                    <InputContainer2>
+                        <Input placeholder="Enter the Title" {...register("name")} />
+                    </InputContainer2>
+                </InputContainer>
+                {type !== false && (
+                    <>
+                        <p className="w-[80%] py-[20px] text-left text-white">URL</p>
                         <InputContainer>
                             <InputContainer2>
-                                <Input />
+                                <Input2 placeholder="Enter the Url Link" {...register("url")} />
                             </InputContainer2>
                         </InputContainer>
-                        <Divider text="URL" type="left" color="white" />
-                        <InputContainer>
-                            <InputContainer2>
-                                <Input2 />
-                            </InputContainer2>
-                        </InputContainer>
-                    </form>
-                </Container>
-            </ModalContainer2>
-        </ModalContainer>
+                    </>
+                )}
+                <Button onClick={onClick}>SUBMIT</Button>
+            </div>
+        </Container>
     );
 };
 
