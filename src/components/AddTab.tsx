@@ -146,8 +146,6 @@ const AddTab = () => {
     const onClick = () => {
         const title = getValues("name");
         const url = getValues("url");
-        console.log("preset");
-        console.log(title, image);
         if (type) {
             addUrl(title, url, image);
         } else {
